@@ -1,0 +1,12 @@
+.action-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    margin: 2rem;
+    button{
+        height: 60px;
+        width: 150px;
+    }
+    justify-content: space-around;
+}

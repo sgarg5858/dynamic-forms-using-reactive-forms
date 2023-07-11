@@ -1,3 +1,6 @@
+:host{
+    display: flex;
+}
 .action-buttons{
     display: flex;
     flex-direction: column;
@@ -9,4 +12,7 @@
         width: 150px;
     }
     justify-content: space-around;
+}
+.dynamic-form-container{
+    margin: 2rem;
 }

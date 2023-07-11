@@ -1,3 +1,26 @@
 {
-    "description":"Company Info"
+    "description":"Company Info",
+    "controls":{
+        "name":{
+            "controlType":"input",
+            "type":"text",
+            "label":"Company Name",
+            "value":""
+        },
+        "phoneNumber":{
+            "controlType":"input",
+            "type":"tel",
+            "label":"Phone number",
+            "value":""
+        },
+        "role":{
+            "controlType":"select",
+            "label":"Role",
+            "value":"",
+            "options":[
+                {"label":"Up to 50 employees","value":"small"},
+                {"label":"50 - 100 employees","value":"medium"},
+                {"label":"More than 150 employees","value":"large"}
+            ]
+        }
 }

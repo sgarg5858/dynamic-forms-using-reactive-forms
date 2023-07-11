@@ -8,12 +8,13 @@ import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DynamicFormComponent
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

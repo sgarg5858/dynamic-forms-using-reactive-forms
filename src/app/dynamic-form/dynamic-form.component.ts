@@ -40,7 +40,7 @@ export class DynamicFormComponent {
   {
     if(!validators) return [];
 
-    return Object.keys(validators).map((validatorKey)=>{
+    return (Object.keys(validators) as Array<keyof typeof validators>).map((validatorKey)=>{
 
       const validatorValue = validators[validatorKey];
 

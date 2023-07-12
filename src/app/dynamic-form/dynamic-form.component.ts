@@ -66,5 +66,9 @@ export class DynamicFormComponent {
       return Validators.nullValidator;
     })
   }
+  onSubmit()
+  {
+    console.log(this.form.value);
+  }
 
 }

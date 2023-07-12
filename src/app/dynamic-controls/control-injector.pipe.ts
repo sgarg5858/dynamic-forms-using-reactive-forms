@@ -1,4 +1,4 @@
-import { Injector, Pipe, PipeTransform } from '@angular/core';
+import { Injector, Pipe, PipeTransform, inject } from '@angular/core';
 import { DynamicControl } from './dynamic-form.model';
 import { CONTROL_DATA } from './control.token';
 
@@ -8,8 +8,13 @@ import { CONTROL_DATA } from './control.token';
 })
 export class ControlInjectorPipe implements PipeTransform {
 
+   parentInjector = inject(Injector);
+
+  //By default injector for below is Null Injector
   transform(controlKey:string, config: DynamicControl): Injector {
+
     return Injector.create({
+      parent:this.parentInjector,
       providers:[
         {
           provide:CONTROL_DATA,

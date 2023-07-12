@@ -3,7 +3,7 @@
     <button (click)="formLoadingTrigger.next('company')" type="button">Load Company Form</button>
 </div>
 <div class="dynamic-form-container" *ngIf="formConfig$ | async as formConfig">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h3>{{formConfig.description}}</h3>
         <div class="form-field" *ngFor="let control of formConfig.controls | keyvalue">
             <label [for]="control.key">{{control.value.label}}</label>
@@ -41,5 +41,6 @@
 
 
         </div>
+        <button type="submit">Save</button>
     </form>
 </div>

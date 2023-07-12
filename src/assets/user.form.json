@@ -6,13 +6,20 @@
             "controlType":"input",
             "type":"text",
             "label":"Full Name",
-            "value":""
+            "value":"",
+            "validators":{
+                "required":true,
+                "minLength":5
+            }
         },
         "email":{
             "controlType":"input",
             "type":"email",
             "label":"Email",
-            "value":""
+            "value":"",
+            "validators":{
+                "email":true
+            }
         },
         "role":{
             "controlType":"select",

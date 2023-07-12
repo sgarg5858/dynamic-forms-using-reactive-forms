@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, Subject, switchMap, tap } from 'rxjs';
-import { DynamicFormConfig } from '../dynamic-controls/dynamic-form.model';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { DynamicControl, DynamicFormConfig } from '../dynamic-controls/dynamic-form.model';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -30,8 +30,34 @@ export class DynamicFormComponent {
   {
     this.form = new FormGroup({});
     Object.keys(controls).forEach((key)=>{
-      this.form.addControl(key, new FormControl(controls[key].value))
+      const validators = this.resolveValidatorsForControlFromConfig(controls[key]);
+      this.form.addControl(key, new FormControl(controls[key].value,validators))
     })
     console.log(this.form);
   }
+
+  private resolveValidatorsForControlFromConfig({validators}:DynamicControl)
+  {
+    if(!validators) return [];
+
+    return Object.keys(validators).map((validatorKey)=>{
+
+      const validatorValue = validators[validatorKey];
+
+      if(validatorKey === 'required')
+      {
+        return Validators.required;
+      }
+      if(validatorKey === 'email')
+      {
+        return Validators.email;
+      }
+      if(validatorKey === 'minLength' && typeof validatorValue === 'number')
+      {
+        return Validators.minLength(validatorValue);
+      }
+      return Validators.nullValidator;
+    })
+  }
+
 }

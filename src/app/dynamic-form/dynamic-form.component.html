@@ -9,27 +9,15 @@
             <label [for]="control.key">{{control.value.label}}</label>
 
             <!-- Render Controls -->
-            <ng-container [ngSwitch]="control.value.controlType">
+            <!-- This approach is not scalable, now we only have 2 types of controls, as soon as
+            we add more number of controls to our form, this template will grow very quickly -->
 
-                <input 
-                [type]="control.value.type" 
-                [value]="control.value.value"
-                [id]="control.key"
-                [formControlName]="control.key"
-                *ngSwitchCase="'input'"
-                >
-                
-                <ng-container  *ngSwitchCase="'select'">
-                    <select 
-                    [value]="control.value.value"
-                    [id]="control.key"
-                    [formControlName]="control.key"
-                    >
-                        <option *ngFor="let option of control.value.options" [value]="option.label">
-                            {{option.label}}
-                        </option>
-                    </select>
-                </ng-container>
+            <!-- What we can do is we can extract each control type to separate component. -->
+            <!-- ngComponentOutlet needs a class constructor -->
+            <ng-containter [ngComponentOutlet]="dynamicComponentResolver.resolve(control.value.controlType)">
+
+            </ng-containter>
+
                 
                 <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('required')">
                     This field is required
@@ -43,7 +31,6 @@
 
 
 
-            </ng-container>
         </div>
     </form>
 </div>

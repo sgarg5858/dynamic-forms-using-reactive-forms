@@ -4,6 +4,7 @@ import { Observable, Subject, switchMap, tap } from 'rxjs';
 import { DynamicControl, DynamicFormConfig } from '../dynamic-controls/dynamic-form.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DynamicComponentResolver } from '../dynamic-controls/dynamic-component-resolver.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -14,7 +15,10 @@ import { CommonModule } from '@angular/common';
 })
 export class DynamicFormComponent {
 
-  constructor(private httpClient:HttpClient){}
+  constructor(
+    private httpClient:HttpClient,
+    protected dynamicComponentResolver:DynamicComponentResolver
+    ){}
 
   form!:FormGroup;
 

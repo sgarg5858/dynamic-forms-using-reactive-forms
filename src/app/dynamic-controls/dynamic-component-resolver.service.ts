@@ -3,7 +3,8 @@ import { DynamicControl } from './dynamic-form.model';
 import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { DynamicSelectComponent } from './dynamic-select/dynamic-select.component';
 
-type DynamicControlMap = {[key in DynamicControl['controlType']]:Type<any>}
+type DynamicControlMap = {[key in DynamicControl['controlType']]:Type<any>};
+
 @Injectable({
   providedIn: 'root'
 })

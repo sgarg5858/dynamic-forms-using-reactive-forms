@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CONTROL_DATA } from '../control.token';
 
 @Component({
   selector: 'app-dynamic-base',
-  templateUrl: './dynamic-base.component.html',
-  styleUrls: ['./dynamic-base.component.scss']
+  template:"",
+  styles:[],
+  standalone:true
 })
 export class DynamicBaseComponent {
-
+  control = inject(CONTROL_DATA);
 }

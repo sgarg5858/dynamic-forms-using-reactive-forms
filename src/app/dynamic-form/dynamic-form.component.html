@@ -14,8 +14,17 @@
 
             <!-- What we can do is we can extract each control type to separate component. -->
             <!-- ngComponentOutlet needs a class constructor -->
-            <ng-containter [ngComponentOutlet]="dynamicComponentResolver.resolve(control.value.controlType)">
 
+            <!-- ngComponentOutlet is a declarative way to create components and doesn't provide a way to 
+            pass inputs to the component -->
+            <!-- But how to pass data to components? -->
+            <!-- We can use DI => cool thing is ngComponentOutlet Directive allows configuring
+            the parent injector for the component that will be dynamically created. -->
+            <!-- Each component will get their own injector and their own config. -->
+            <ng-containter 
+            [ngComponentOutlet]="dynamicComponentResolver.resolve(control.value.controlType)"
+            [ngComponentOutletInjector]="control.key | controlInjector : control.value"
+            >
             </ng-containter>
 
                 

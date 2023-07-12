@@ -5,13 +5,16 @@ import { DynamicControl, DynamicFormConfig } from '../dynamic-controls/dynamic-f
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DynamicComponentResolver } from '../dynamic-controls/dynamic-component-resolver.service';
+import { ControlInjectorPipe } from '../dynamic-controls/control-injector.pipe';
+import { DynamicInputComponent } from '../dynamic-controls/dynamic-input/dynamic-input.component';
+import { DynamicSelectComponent } from '../dynamic-controls/dynamic-select/dynamic-select.component';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
   standalone:true,
-  imports:[CommonModule,ReactiveFormsModule]
+  imports:[CommonModule,ReactiveFormsModule,ControlInjectorPipe,DynamicInputComponent,DynamicSelectComponent]
 })
 export class DynamicFormComponent {
 

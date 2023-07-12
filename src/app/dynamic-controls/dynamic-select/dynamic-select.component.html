@@ -1,1 +1,11 @@
-<p>dynamic-select works!</p>
+<label [for]="control.controlKey">
+    {{control.config.label}}
+</label>
+<select 
+[id]="control.controlKey"
+[value]="control.config.value"
+>
+<option *ngFor="let option of control.config.options" [value]="option.value">
+    {{option.label}}
+</option>
+</select>

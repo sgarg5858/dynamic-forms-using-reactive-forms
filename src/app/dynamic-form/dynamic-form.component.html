@@ -3,9 +3,9 @@
     <button (click)="formLoadingTrigger.next('company')" type="button">Load Company Form</button>
 </div>
 <div class="dynamic-form-container" *ngIf="formConfig$ | async as formConfig">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h3>{{formConfig.description}}</h3>
-        <div class="form-field" *ngFor="let control of formConfig.controls | keyvalue">
+    <form [formGroup]="formConfig.form" (ngSubmit)="onSubmit()">
+        <h3>{{formConfig.config.description}}</h3>
+        <div class="form-field" *ngFor="let control of formConfig.config.controls | keyvalue">
 
             <!-- Render Controls -->
             <!-- This approach is not scalable, now we only have 2 types of controls, as soon as
@@ -27,7 +27,7 @@
             </ng-containter>
 
                 
-                <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('required')">
+                <!-- <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('required')">
                     This field is required
                 </div>
                 <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('email')">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('minlength')">
                     This field requires atleast {{form.get(control.key)?.errors?.['minlength']?.['requiredLength']}} characters
-                </div>
+                </div> -->
 
 
 

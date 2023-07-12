@@ -13,7 +13,7 @@ import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angu
       provide:ControlContainer,
       useFactory:()=>{
         const parentContainer = inject(ControlContainer,{skipSelf:true});
-        return parentContainer
+        return parentContainer;
       }
     }
   ]

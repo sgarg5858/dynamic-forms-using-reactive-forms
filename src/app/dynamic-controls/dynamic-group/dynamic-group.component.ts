@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, ControlContainer, FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { DynamicBaseComponent } from '../dynamic-base/dynamic-base.component';
 import { ControlInjectorPipe } from '../control-injector.pipe';
 import { DynamicComponentResolver } from '../dynamic-component-resolver.service';
@@ -22,6 +22,8 @@ import { DynamicComponentResolver } from '../dynamic-component-resolver.service'
   ]
 })
 export class DynamicGroupComponent extends DynamicBaseComponent {
+
+  override formControl = new FormGroup({});
 
   constructor(protected dynamicComponentResolver:DynamicComponentResolver){
     super();

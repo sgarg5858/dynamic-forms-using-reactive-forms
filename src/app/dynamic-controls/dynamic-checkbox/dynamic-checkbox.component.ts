@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './dynamic-checkbox.component.html',
   styleUrls: ['./dynamic-checkbox.component.scss'],
   standalone:true,
-  imports:[ReactiveFormsModule]
+  imports:[ReactiveFormsModule,DynamicBaseComponent]
 })
 export class DynamicCheckboxComponent extends DynamicBaseComponent {
 

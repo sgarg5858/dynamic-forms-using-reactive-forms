@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './dynamic-select.component.html',
   styleUrls: ['./dynamic-select.component.scss'],
   standalone:true,
-  imports:[CommonModule,ReactiveFormsModule]
+  imports:[CommonModule,ReactiveFormsModule,DynamicBaseComponent]
 })
 export class DynamicSelectComponent extends DynamicBaseComponent {
 

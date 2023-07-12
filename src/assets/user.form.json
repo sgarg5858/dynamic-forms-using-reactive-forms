@@ -38,6 +38,31 @@
             "validators":{
                 "requiredTrue":true
             }
+        },
+        "socialLinks":{
+            "controlType":"group",
+            "label":"Social Profiles:",
+            "controls":{
+                "twitter":{
+                    "controlType":"input",
+                    "type":"text",
+                    "label":"Twitter",
+                    "value":"",
+                    "validators":{
+                        "required":true
+                    }
+                },
+                "linkedin":{
+                    "controlType":"input",
+                    "type":"text",
+                    "label":"Linkedin",
+                    "value":"",
+                    "validators":{
+                        "required":true
+                    }
+                }
+            }
+
         }
 
     }

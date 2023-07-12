@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './dynamic-input.component.html',
   styleUrls: ['./dynamic-input.component.scss'],
   standalone:true,
-  imports:[ReactiveFormsModule]
+  imports:[ReactiveFormsModule,DynamicBaseComponent]
 })
 export class DynamicInputComponent  extends DynamicBaseComponent{
   // inject automatically infers type from injection token

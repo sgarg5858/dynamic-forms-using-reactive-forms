@@ -6,15 +6,13 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { DynamicComponentResolver } from '../dynamic-controls/dynamic-component-resolver.service';
 import { ControlInjectorPipe } from '../dynamic-controls/control-injector.pipe';
-import { DynamicInputComponent } from '../dynamic-controls/dynamic-input/dynamic-input.component';
-import { DynamicSelectComponent } from '../dynamic-controls/dynamic-select/dynamic-select.component';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
   standalone:true,
-  imports:[CommonModule,ReactiveFormsModule,ControlInjectorPipe,DynamicInputComponent,DynamicSelectComponent]
+  imports:[CommonModule,ReactiveFormsModule,ControlInjectorPipe]
 })
 export class DynamicFormComponent {
 
@@ -37,10 +35,32 @@ export class DynamicFormComponent {
   {
     this.form = new FormGroup({});
     Object.keys(controls).forEach((key)=>{
-      const validators = this.resolveValidatorsForControlFromConfig(controls[key]);
-      this.form.addControl(key, new FormControl(controls[key].value,validators))
+      this.buildControl(key,controls[key],this.form);
     })
     console.log(this.form);
+  }
+
+  buildGroup(controlKey:string,controls:DynamicControl['controls'],parentFormGroup:FormGroup)
+  {
+    if(!controls) return;
+
+    const nestedFormGroup = new FormGroup({});
+    Object.keys(controls).forEach((key)=>{
+      const currentControl =controls[key];
+      this.buildControl(key,currentControl,nestedFormGroup);
+    });
+    parentFormGroup.addControl(controlKey,nestedFormGroup);
+  }
+
+  buildControl(key:string,control:DynamicControl,parentformGroup:FormGroup)
+  {
+    if(control.controlType === 'group')
+    {
+      this.buildGroup(key,control.controls,parentformGroup);
+      return;
+    }
+    const validators = this.resolveValidatorsForControlFromConfig(control);
+    parentformGroup.addControl(key, new FormControl(control.value,validators))
   }
 
   private resolveValidatorsForControlFromConfig({validators}:DynamicControl)

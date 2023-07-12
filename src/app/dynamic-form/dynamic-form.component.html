@@ -18,17 +18,30 @@
                 [formControlName]="control.key"
                 *ngSwitchCase="'input'"
                 >
+                
+                <ng-container  *ngSwitchCase="'select'">
+                    <select 
+                    [value]="control.value.value"
+                    [id]="control.key"
+                    [formControlName]="control.key"
+                    >
+                        <option *ngFor="let option of control.value.options" [value]="option.label">
+                            {{option.label}}
+                        </option>
+                    </select>
+                </ng-container>
+                
+                <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('required')">
+                    This field is required
+                </div>
+                <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('email')">
+                    This field requires email
+                </div>
+                <div class="input-error" *ngIf="form.get(control.key)?.dirty && form.get(control.key)?.hasError('minlength')">
+                    This field requires atleast {{form.get(control.key)?.errors?.['minlength']?.['requiredLength']}} characters
+                </div>
 
-                <select 
-                [value]="control.value.value"
-                [id]="control.key"
-                [formControlName]="control.key"
-                *ngSwitchCase="'select'"
-                >
-                <option *ngFor="let option of control.value.options" [value]="option.label">
-                    {{option.label}}
-                </option>
-                </select>
+
 
             </ng-container>
         </div>

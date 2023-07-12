@@ -6,7 +6,7 @@ export interface DynamicOption<T>{
 }
 type ValidatorKeys = keyof Omit<typeof Validators,'compose'|'prototype'| 'composeAsync' >;
 export interface DynamicControl<T=string>{
-    controlType:'input'|'select';
+    controlType:'input'|'select'|'checkbox';
     type?:string;
     label:string;
     value:T | null;

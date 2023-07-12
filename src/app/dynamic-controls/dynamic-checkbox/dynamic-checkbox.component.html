@@ -1,0 +1,11 @@
+<ng-container [formGroup]="formGroup">
+    <input 
+    type="checkbox"
+    [value]="control.config.value"
+    [id]="control.controlKey"
+    [formControlName]="control.controlKey"
+    >
+    <label [for]="control.controlKey">{{control.config.label}}</label>
+
+
+</ng-container>

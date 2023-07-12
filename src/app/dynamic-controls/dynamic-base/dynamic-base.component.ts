@@ -1,6 +1,6 @@
-import { Component, InjectFlags, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CONTROL_DATA } from '../control.token';
-import { ControlContainer, FormGroup, FormGroupDirective } from '@angular/forms';
+import { ControlContainer, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-base',

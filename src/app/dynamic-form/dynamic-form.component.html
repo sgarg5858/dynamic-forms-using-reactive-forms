@@ -6,7 +6,6 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h3>{{formConfig.description}}</h3>
         <div class="form-field" *ngFor="let control of formConfig.controls | keyvalue">
-            <label [for]="control.key">{{control.value.label}}</label>
 
             <!-- Render Controls -->
             <!-- This approach is not scalable, now we only have 2 types of controls, as soon as

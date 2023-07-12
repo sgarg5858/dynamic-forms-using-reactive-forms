@@ -55,6 +55,10 @@ export class DynamicFormComponent {
       {
         return Validators.required;
       }
+      if(validatorKey === 'requiredTrue')
+      {
+        return Validators.requiredTrue;
+      }
       if(validatorKey === 'email')
       {
         return Validators.email;

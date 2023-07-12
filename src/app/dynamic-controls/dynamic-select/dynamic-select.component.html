@@ -1,8 +1,7 @@
 <ng-container [formGroup]="formGroup">
 
-<label [for]="control.controlKey">
-    {{control.config.label}}
-</label>
+    <label [for]="control.controlKey">{{control.config.label}}</label>
+
 <select 
 [id]="control.controlKey"
 [value]="control.config.value"
